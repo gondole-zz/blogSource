@@ -19,6 +19,7 @@ menu:
   tags: /tags					#标签页（需手动创建）  
   #commonweal: /404.html        #公益 404 （需手动创建）
 ```
+<!--more-->
 
 ## 标签页面
 
@@ -31,7 +32,6 @@ menu:
 ```	java
     hexo new page "categories"
 ```
-<!--more-->
 
 # 分页插件 （针对站点）
 
