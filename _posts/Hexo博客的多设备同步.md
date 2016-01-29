@@ -3,7 +3,7 @@ date: 2016-01-22 14:32:35
 tags: hexo
 categories: hexo
 ---
-![](http://7xqdqt.com1.z0.glb.clouddn.com/2016%2F01%2F27%2F24hrPQn.jpg)
+![流逝](http://7xqdqt.com1.z0.glb.clouddn.com/2016%2F01%2F27%2F24hrPQn.jpg)
 
 在公司搭建了两天hexo博客，主题各种配置，发了几篇文章，回到家里想继续搞时发现搞不了...， GitHub上面存放的是hexo根据md生成的网页文件，于是搜索了一下怎么样在多设备上操作hexo博客，在公司弄完回家接着弄啊得。今天看到一种方法，试验了下，大概走通了，记录一下。
 

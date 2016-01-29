@@ -1,4 +1,4 @@
-title: Hexo博客主题优化历史记录
+title: Hexo博客Next主题优化
 date: 2016-01-22 17:16:30
 tags: hexo
 categories: hexo
@@ -86,14 +86,19 @@ menu:
 	{% block footer %}{% endblock %}
 ```
 
-## 显示单页面访问量
+## 显示文章阅读次数
 
-```	java
-	......待编辑
-```
+因为不蒜子只能统计文章详情页面的阅读次数，在主页面是没法显示的，所以后来换成了leanCloud来进行阅读次数的显示。
+1. 注册leanCloud，获取到appId和appKey 写入到主题配置文件里。  
+2. 因为Next主题已经集成了相关代码，所以直接部署就生效了。
+
 
 # 多说评论
-## 在多说注册并且创建站点
+
+## 多说创建个人站点
+
+在多说注册并且创建站点并且可以进行相关设置比如默认头像以及自定义CSS评论框样式
+
 ## 修改站点配置文件
 
 在站点配置文件中增加duoshuo_shortname字段，duoshuo_shortname就是上一步中你填写的值。
@@ -102,7 +107,7 @@ menu:
     duoshuo_shortname: gondole
 ```
 
-## 去除分类页标签页多说评论
+## 去除标签页评论
 
 ```	java
 	title: categories
@@ -111,5 +116,31 @@ menu:
 	comments: false   #去除多说评论框
 ```
 
+# 添加RSS
 
+添加feed插件，一定记得加--save
+``` java
+npm install hexo-generator-feed --save
+```
+插件安装完成后 在站点配置文件_config.yml 里添加  
+``` java
+plugins:
+- hexo-generator-feed
+```
+在主题配置文件里添加  
+``` java  
+rss: /atom.xml
+```  
+然后在执行 hexo g时就可以自动生成atom.xml文件了。
 
+# 添加 Swiftype 搜索
+
+按照next的github上的教程配置了半天没生效...， 后来网上搜索到了新版本Swiftype Search的配置方法，注册 Swiftype 后 在安装配置时，复制你的code  
+
+	_st('install','xxxxxxxxxxxxx','2.0.0');
+
+其中 **xxxxxxxxxxxxx** 为你的swiftypeKey，然后在站点配置文件_config.yml中添加：
+
+	swiftype_key: xxxxxxxxxxxxx
+
+另外需要注意的是，在进入搜索框 **(search field)** 一项时，主意将搜索框的ID改成NexT主题搜索框的ID **#st-search-input**，TYPE修改为 **elementID**，最后进入(**activate**)这一项，点击右下角的**ACTIVATE SWIFTYPE**按钮即可完成swiftype的所有配置了。
