@@ -144,3 +144,20 @@ rss: /atom.xml
 	swiftype_key: xxxxxxxxxxxxx
 
 另外需要注意的是，在进入搜索框 **(search field)** 一项时，主意将搜索框的ID改成NexT主题搜索框的ID **#st-search-input**，TYPE修改为 **elementID**，最后进入(**activate**)这一项，点击右下角的**ACTIVATE SWIFTYPE**按钮即可完成swiftype的所有配置了。
+
+# 特有内建主题样式
+
+
+`.blockquote-center`
+
+> 带上下分割线的引用，引用内文本将自动居中。适用于单行引用文本的场景。  
+
+	<blockquote class="blockquote-center">blah blah blah</blockquote>
+
+---
+
+`.full-image`
+
+> 图片将自动扩展 26%，突破文章宽度。
+
+	<img src="/image-url" class="full-image" />
