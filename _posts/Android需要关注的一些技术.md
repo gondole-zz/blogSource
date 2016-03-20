@@ -5,6 +5,7 @@ tags:
 	- 开源项目
 categories: Android
 ---
+![](http://7xqdqt.com1.z0.glb.clouddn.com/2016%2F02%2F26%2F1-XwEpgAyjpF0rGhEdUvm_mQ.jpeg)
 > 
 1. DataBinding
 2. MVP模式

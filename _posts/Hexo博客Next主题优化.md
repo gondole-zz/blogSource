@@ -104,7 +104,7 @@ menu:
 在站点配置文件中增加duoshuo_shortname字段，duoshuo_shortname就是上一步中你填写的值。
 
 ```	java
-    duoshuo_shortname: gondole
+    duoshuo_shortname: your_duoshuo_name
 ```
 
 ## 去除标签页评论
@@ -114,6 +114,21 @@ menu:
 	date: 2015-09-18 21:46:42
 	type: "categories"
 	comments: false   #去除多说评论框
+```
+
+## 把多说评论依赖的embed.js放置底部
+
+Yahoo性能中心总结的高性能网站设计的规则提及，把Javascript脚本尽量放到页面底部加载，这里不多说。
+wordpress多说插件提供了在网页底部插入多说核心脚本embed.js这选项供用户选择，比较人性化。其他博客程序的话可以把embed.js放置到主题的footer底部加载。这里以hexo静态博客程序，NexT.Mist主题举个栗子，这里需要修改的文件是duoshuo.swig，路径是your-hexo-site\themes\next\layout\_scripts目录下，将下面一段代码
+
+```
+(document.getElementsByTagName('head')[0]
+```
+
+修改成下面的代码
+
+```
+(document.getElementById('footer')
 ```
 
 # 添加RSS
