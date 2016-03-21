@@ -103,49 +103,41 @@ menu:
 
 在站点配置文件中增加duoshuo_shortname字段，duoshuo_shortname就是上一步中你填写的值。
 
-```	java
-    duoshuo_shortname: your_duoshuo_name
-```
+	duoshuo_shortname: your_duoshuo_name
 
 ## 去除标签页评论
 
-```	java
 	title: categories
 	date: 2015-09-18 21:46:42
 	type: "categories"
 	comments: false   #去除多说评论框
-```
 
 ## 把多说评论依赖的embed.js放置底部
 
 Yahoo性能中心总结的高性能网站设计的规则提及，把Javascript脚本尽量放到页面底部加载，这里不多说。
 wordpress多说插件提供了在网页底部插入多说核心脚本embed.js这选项供用户选择，比较人性化。其他博客程序的话可以把embed.js放置到主题的footer底部加载。这里以hexo静态博客程序，NexT.Mist主题举个栗子，这里需要修改的文件是duoshuo.swig，路径是your-hexo-site\themes\next\layout\_scripts目录下，将下面一段代码
 
-```
-(document.getElementsByTagName('head')[0]
-```
+	(document.getElementsByTagName('head')[0]
 
 修改成下面的代码
 
-```
-(document.getElementById('footer')
-```
+	(document.getElementById('footer')
 
 # 添加RSS
 
 添加feed插件，一定记得加--save
-``` java
-npm install hexo-generator-feed --save
-```
+
+	npm install hexo-generator-feed --save
+
 插件安装完成后 在站点配置文件_config.yml 里添加  
-``` java
-plugins:
-- hexo-generator-feed
-```
+
+	plugins:  
+	- hexo-generator-feed
+
 在主题配置文件里添加  
-``` java  
-rss: /atom.xml
-```  
+
+	rss: /atom.xml
+
 然后在执行 hexo g时就可以自动生成atom.xml文件了。
 
 # 添加 Swiftype 搜索
@@ -160,19 +152,18 @@ rss: /atom.xml
 
 另外需要注意的是，在进入搜索框 **(search field)** 一项时，主意将搜索框的ID改成NexT主题搜索框的ID **#st-search-input**，TYPE修改为 **elementID**，最后进入(**activate**)这一项，点击右下角的**ACTIVATE SWIFTYPE**按钮即可完成swiftype的所有配置了。
 
-# 特有内建主题样式
+# gulp插件压缩
+
+### 安装gulp相关插件
+
+	npm install gulp -g  
+	npm install gulp-minify-css gulp-uglify gulp-htmlmin gulp-htmlclean --save
+
+### 执行 gulp 任务
+
+安装完 gulp 插件后，需要在 package.json 同级目录下，新建 gulpfile.js。  
+
+文件保存后，当我们执行 hexo g && gulp 时，gulp 会根据 gulpfile.js 中的配置，对 public 目录中的静态资源文件进行压缩。压缩完成后执行 hexo d 部署到 github / vps 中即可。
 
 
-`.blockquote-center`
-
-> 带上下分割线的引用，引用内文本将自动居中。适用于单行引用文本的场景。  
-
-	<blockquote class="blockquote-center">blah blah blah</blockquote>
-
----
-
-`.full-image`
-
-> 图片将自动扩展 26%，突破文章宽度。
-
-	<img src="/image-url" class="full-image" />
+    
