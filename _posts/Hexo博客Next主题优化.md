@@ -4,6 +4,8 @@ tags: hexo
 categories: hexo
 ---
 
+![](http://7xqdqt.com1.z0.glb.clouddn.com/2016%2F03%2F24%2Fhexo.png)
+
 目前使用NexT.Pisces主题，优化过程比较零碎，也比较多，在此整理一下。
 
 # 菜单设置
@@ -33,9 +35,9 @@ menu:
     hexo new page "categories"
 ```
 
-# 分页插件 （针对站点）
+# 分页插件
 
-在blog目录下的_config.yml配置文件末尾添加以下内容以设置分页参数
+在blog目录下的_config.yml站点配置文件末尾添加以下内容以设置分页参数
 
 ```	java
 	# Plugins
@@ -164,6 +166,5 @@ wordpress多说插件提供了在网页底部插入多说核心脚本embed.js这
 安装完 gulp 插件后，需要在 package.json 同级目录下，新建 gulpfile.js。  
 
 文件保存后，当我们执行 hexo g && gulp 时，gulp 会根据 gulpfile.js 中的配置，对 public 目录中的静态资源文件进行压缩。压缩完成后执行 hexo d 部署到 github / vps 中即可。
-
 
     
