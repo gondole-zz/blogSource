@@ -15,7 +15,7 @@ categories: Android
 
 <!--more-->
 
-## 开始
+## 开始阅读
 
 1. Handler-Message-Looper
 2. Activity和Service
@@ -28,19 +28,19 @@ categories: Android
 9. Volley
 10. android.util.*
 
-## 进阶
+## 进阶阅读
 
 1. Context
 2. ClassLoader
 3. Binder
 4. WMS，AMS，PMS，NMS，IMS等系统Service
 
-### 开源项目
+## 开源项目
 
-1. EventBus
-2. OTTO
+1. EventBus、OTTO （事件总线）
+2. Volley (网络请求)
 3. RxJava （异步）
-4. Guava
+4. Guava （核心基础类库）
 
 ## 一些大神和资源
 
