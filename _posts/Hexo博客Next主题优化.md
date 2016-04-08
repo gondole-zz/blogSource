@@ -154,6 +154,18 @@ wordpress多说插件提供了在网页底部插入多说核心脚本embed.js这
 
 另外需要注意的是，在进入搜索框 **(search field)** 一项时，主意将搜索框的ID改成NexT主题搜索框的ID **#st-search-input**，TYPE修改为 **elementID**，最后进入(**activate**)这一项，点击右下角的**ACTIVATE SWIFTYPE**按钮即可完成swiftype的所有配置了。
 
+# Google字体库优化
+
+由于国内偶尔访问谷歌字体库非常慢，故使用360CDN替换, themes\next\layout\_partials\head.swig
+
+将：
+
+	<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+替换为：
+
+	<link href="//fonts.useso.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
 # gulp插件压缩
 
 ### 安装gulp相关插件
@@ -166,5 +178,4 @@ wordpress多说插件提供了在网页底部插入多说核心脚本embed.js这
 安装完 gulp 插件后，需要在 package.json 同级目录下，新建 gulpfile.js。  
 
 文件保存后，当我们执行 hexo g && gulp 时，gulp 会根据 gulpfile.js 中的配置，对 public 目录中的静态资源文件进行压缩。压缩完成后执行 hexo d 部署到 github / vps 中即可。
-
     
