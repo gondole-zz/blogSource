@@ -20,14 +20,14 @@ Eclipse时代，结合ant也是可以进行多渠道打包的，可惜效率以�
 在module的build.gradle进行各个渠道的声明：  
 
 ```Groovy
-	android {
-	   ...
-	    productFlavors {
-	        wandoujia {}
-	        qihu360 {}
-	        baidu {}
-	    }
-	}
+android {
+   ...
+    productFlavors {
+        wandoujia {}
+        qihu360 {}
+        baidu {}
+    }
+}
 ```
 
 ## 渠道特有信息配置
@@ -35,59 +35,59 @@ Eclipse时代，结合ant也是可以进行多渠道打包的，可惜效率以�
 eg.友盟的渠道配置一般写到manifest.xml里
 
 ```XML
-	<meta-data
-	    android:name="UMENG_CHANNEL"
-	    android:value="${CHANNEL_VALUE}" />
+<meta-data
+	android:name="UMENG_CHANNEL"
+	android:value="${CHANNEL_VALUE}" />
 ```
 
 占位符在build.gradle里各个渠道声明处进行信息配置，defaultConfig也可以配置默认值
 
 ```Groovy
-    //渠道列表
-    productFlavors {
-        wandoujia {
-            //包名
-            applicationId "com.examble.wandoujia"
+//渠道列表
+productFlavors {
+    wandoujia {
+        //包名
+		applicationId "com.example.wandoujia"
 
-            //动态配置字符串
-            resValue "string", "app_name", "豌豆荚专用"
-
-			//动态配置字符串到buildConfig类里方便在代码里引用            
-			buildConfigField 'String','URI_JPUSH_HISTORY','"xxx"'
+		//动态配置字符串
+		resValue "string", "app_name", "豌豆荚专用"  
+		
+		//动态配置字符串到buildConfig类里方便在代码里引用            
+		buildConfigField 'String','URI_JPUSH_HISTORY','"xxx"'
             
-			//对占位符进行赋值，支持多个
-			manifestPlaceholders = [
-                    JPUSH_APPKEY_VALUE: "xxx",
-                    JPushHistoryContentProvider_VALUE: "xxx",
-                    JPUSH_REVEIVER_CATEGORY_VALUE: "xxx",
-                    JPUSH_PERMISSION_VALUE: "xxx",
-                    APPKEY_VALUE: "xx",
-                    UMENG_APPKEY_VALUE: "xxx"
-            ]
-        }
+		//对占位符进行赋值，支持多个
+		manifestPlaceholders = [
+				JPUSH_APPKEY_VALUE: "xxx",
+				JPushHistoryContentProvider_VALUE: "xxx",
+				JPUSH_REVEIVER_CATEGORY_VALUE: "xxx",
+				JPUSH_PERMISSION_VALUE: "xxx",
+				APPKEY_VALUE: "xx",
+				UMENG_APPKEY_VALUE: "xxx"
+        ]
     }
+}
 
-    //指定渠道名 flavor的name eg.wandoujia
-    productFlavors.all {
-        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
-    }
+//指定渠道名 flavor的name eg.wandoujia
+productFlavors.all {
+    flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+}
 ```
 
 defaultConfig配置的清单文件（AndroidManifest.xml）的一些设置。defaultConfig的配置将覆盖AndroidManifest.xml中的设置。 
 defaultConfig元素指定的配置适用于所有的版本(build variants)，除非一个build variants的配置将覆盖一些值。
 
 ```Groovy
-    defaultConfig {
-        minSdkVersion 8
-        targetSdkVersion 22
-        versionCode 10
-        versionName "3.0"
+defaultConfig {
+    minSdkVersion 8
+    targetSdkVersion 22
+    versionCode 10
+    versionName "3.0"
 
-        // dex突破65535的限制
-        multiDexEnabled true
+    // dex突破65535的限制
+    multiDexEnabled true
 
-        applicationId "com.cdel.chinaacc.exam.bank"
-	}
+    applicationId "com.cdel.chinaacc.exam.bank"
+}
 ```
 
 另外如果有一些渠道有特有的逻辑代码和资源也是可以配置的。在src/main 这里，main表示程序构建默认使用的代码和资源，我们可以在main同级目录建立和渠道名相同名字的文件夹，eg.src/wandoujia，下面的子目录需要和main下的结构一样，比如：
